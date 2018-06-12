@@ -10,4 +10,10 @@ class ApplicationController < Sinatra::Base
   get "/" do
     erb :index
   end
+
+  helpers do
+    def blank_values?(params)
+      params.values.any?(&:empty?)
+    end
+  end
 end

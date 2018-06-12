@@ -6,8 +6,14 @@ class UserController < ApplicationController
 
   post '/signup' do
     binding.pry
-    @user = User.find_or_create_by(username: params[:username], password: params[:password])
+    if blank_values?(params)
+      redirect "/signup"
+    else
+      @user = User.create(params)
+    end
     binding.pry
   end
+
+
 
 end
