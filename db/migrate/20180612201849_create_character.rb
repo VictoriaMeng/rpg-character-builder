@@ -9,6 +9,7 @@ class CreateCharacter < ActiveRecord::Migration[5.2]
       t.string :skin_color
       t.string :eye_color
       t.string :hair_color
+      t.integer :user_id
     end
   end
 end
