@@ -22,7 +22,7 @@ class ApplicationController < Sinatra::Base
     end
 
     def blank_game_input?(params)
-      params[:game_id].empty? && params[:new_game].empty?
+      !params[:game_id] && params[:new_game].empty?
     end
 
     def logged_in?
