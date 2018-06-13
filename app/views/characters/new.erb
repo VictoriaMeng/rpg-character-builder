@@ -8,11 +8,11 @@
   <input type="text" name="character[class]" id="class"></p>
   <p><label for="gender">Gender: </label>
     <% genders.each do |gender| %>
-      <input type="radio" name="character[gender]" id="gender"><%= gender%></input>
+      <input type="radio" name="character[gender]" id="gender" value="<%= gender %>"><%= gender%></input>
     <% end %></p>
-  <p><label for="game">Pick an existing game: </label>
+  <p><label for="existing_game">Pick an existing game: </label>
     <% Game.all.each do |game| %>
-      <input type="radio" name="game[name]" id="game"> <%= game.name %></input>
+      <input type="radio" name="game_id" id="existing_game" value="<%= game.id %>"> <%= game.name %></input>
     <% end %>
   </p>
   <p><label for="new_game">Or enter a new game: </label>
