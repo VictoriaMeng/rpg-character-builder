@@ -1,0 +1,21 @@
+<form method="post" action="/characters/<%= @character.id %>/edit">
+  <input id="hidden" type="hidden" name="_method" value="patch">
+  <p><label for="name">Name: </label>
+  <input type="text" name="character[name]" id="name"></p>
+  <p><label for="race">Race: </label>
+  <input type="text" name="character[race]" id="race"></p>
+  <p><label for="combat_class">Class: </label>
+  <input type="text" name="character[combat_class]" id="combat_class"></p>
+  <p><label for="gender">Gender: </label>
+    <% genders.each do |gender| %>
+      <input type="radio" name="character[gender]" id="gender" value="<%= gender %>"><%= gender%></input>
+    <% end %></p>
+  <p><label for="existing_game">Pick an existing game: </label>
+    <% Game.all.each do |game| %>
+      <input type="radio" name="game_id" id="existing_game" value="<%= game.id %>"> <%= game.name %></input>
+    <% end %>
+  </p>
+  <p><label for="new_game">Or enter a new game: </label>
+  <input type="text" name="new_game" id="new_game"></p>
+  <input type="submit">
+</form>

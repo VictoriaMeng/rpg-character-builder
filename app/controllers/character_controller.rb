@@ -9,17 +9,27 @@ class CharacterController < ApplicationController
 
   get "/characters/:id" do
     @character = Character.find(params[:id])
-     if @character.user_id == session[:id]
+     if belongs_to_user?(@character)
        @game = Game.find(@character.game_id)
        @user = User.find(@character.user_id)
        erb :"/characters/show"
      else
-       redirect "/signup"
+       redirect "/login"
+     end
+  end
+
+  get "/characters/:id/edit" do
+    @character = Character.find(params[:id])
+     if belongs_to_user?(@character)
+       @game = Game.find(@character.game_id)
+       @user = User.find(@character.user_id)
+       erb :"/characters/edit"
+     else
+       redirect "/login"
      end
   end
 
   post "/characters/new" do
-    binding.pry
     if blank_values?(params[:character]) || blank_game_input?(params)
       redirect "/characters/new"
     else
@@ -36,6 +46,21 @@ class CharacterController < ApplicationController
       @user.save
       @game.save
       redirect "/users/#{@user.id}"
+    end
+  end
+
+  patch "/characters/:id/edit" do
+    if all_empty?(params[:character]) && params[:new_game].empty?
+      redirect "/characters/#{params[:id]}/edit"
+    else
+      @character = Character.find(params[:id])
+      params[:character].each do |key, value|
+        @character.update("#{key}": "#{value}") unless value.empty?
+      end
+    binding.pry
+    if params[:character][:game_id]
+      @character.update(game_id: params[:character][:game_id])
+      binding.pry
     end
   end
 end
