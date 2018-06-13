@@ -8,8 +8,14 @@
   <input type="text" name="character[class]" id="class"></p>
   <p><label for="gender">Gender: </label>
     <% genders.each do |gender| %>
-      <input type="checkbox" name="character[gender]" id="gender"><%= gender%></input>
+      <input type="radio" name="character[gender]" id="gender"><%= gender%></input>
     <% end %></p>
-  <p><label for="game_list">Pick an existing game: </label>
+  <p><label for="game">Pick an existing game: </label>
+    <% Game.all.each do |game| %>
+      <input type="radio" name="game[name]" id="game"> <%= game.name %></input>
+    <% end %>
+  </p>
+  <p><label for="new_game">Or enter a new game: </label>
+  <input type="text" name="new_game" id="new_game"></p>
   <input type="submit">
 </form>
