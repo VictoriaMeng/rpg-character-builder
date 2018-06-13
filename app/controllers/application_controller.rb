@@ -5,6 +5,7 @@ class ApplicationController < Sinatra::Base
     set :public_folder, 'public'
     set :views, 'app/views'
     enable :sessions
+    set :session_secret, "something"
   end
 
   get "/" do
@@ -22,6 +23,10 @@ class ApplicationController < Sinatra::Base
 
     def blank_game_input?(params)
       params[:game_id].empty? && params[:new_game].empty?
+    end
+
+    def logged_in?
+      session.has_key?(:id)
     end
   end
 end

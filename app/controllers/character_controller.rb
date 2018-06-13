@@ -1,6 +1,10 @@
 class CharacterController < ApplicationController
   get "/characters/new" do
-    erb :'/characters/new'
+    if logged_in?
+      erb :'/characters/new'
+    else
+      redirect "/login"
+    end
   end
 
   post "/characters/new" do
