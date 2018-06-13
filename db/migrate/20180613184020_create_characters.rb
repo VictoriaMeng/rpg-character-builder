@@ -4,7 +4,7 @@ class CreateCharacters < ActiveRecord::Migration[5.2]
       t.string :name
       t.string :gender
       t.string :race
-      t.string :class
+      t.string :combat_class
       t.integer :user_id
       t.integer :game_id
     end

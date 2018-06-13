@@ -9,7 +9,7 @@ class UserController < ApplicationController
   end
 
   get '/users/:id' do
-    if logged_in? && session[:id] == params[:id].to_i
+    if logged_in? && correct_user?
       @user = User.find(session[:id])
       erb :'users/show'
     else

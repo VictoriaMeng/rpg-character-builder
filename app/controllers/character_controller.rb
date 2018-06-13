@@ -12,6 +12,8 @@ class CharacterController < ApplicationController
       redirect "/characters/new"
     else
       binding.pry
+      @character = Character.create(params[:character])
+      binding.pry
     end
   end
 end
