@@ -1,3 +1,8 @@
 <h1>Hello, <%= @user.username %>.</h1>
 
+<h2>Existing Characters</h2>
+<% @user.characters.each do |character| %>
+  <p><a href="/characters/<%= character.id%>"><%= character.name %></a></p>
+<% end %>
+
 <p><a href="/characters/new">Create Character</a></p>
