@@ -57,10 +57,12 @@ class CharacterController < ApplicationController
       params[:character].each do |key, value|
         @character.update("#{key}": "#{value}") unless value.empty?
       end
-    binding.pry
-    if params[:character][:game_id]
-      @character.update(game_id: params[:character][:game_id])
       binding.pry
+      if params[:character][:game_id]
+        @character.update(game_id: params[:character][:game_id])
+        binding.pry
+      end
     end
   end
+
 end
