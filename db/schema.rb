@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 2018_06_12_201849) do
     t.string "race"
     t.string "gender"
     t.integer "user_id"
+    t.integer "game_id"
   end
 
   create_table "users", force: :cascade do |t|
