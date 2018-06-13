@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_13_183524) do
+ActiveRecord::Schema.define(version: 2018_06_13_184020) do
+
+  create_table "characters", force: :cascade do |t|
+    t.string "name"
+    t.string "gender"
+    t.string "race"
+    t.string "class"
+    t.integer "user_id"
+    t.integer "game_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "username"
