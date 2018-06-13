@@ -7,6 +7,9 @@ class CharacterController < ApplicationController
     end
   end
 
+  get "/characters/:id" do
+  end
+
   post "/characters/new" do
     if blank_values?(params[:character]) || blank_game_input?(params)
       redirect "/characters/new"
