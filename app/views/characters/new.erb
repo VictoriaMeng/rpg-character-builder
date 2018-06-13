@@ -1,1 +1,14 @@
 <h1>Create your new character here.</h1>
+<form method="post" action="/characters/new">
+  <p><label for="name">Name: </label>
+  <input type="text" name="character[name]" id="name"></p>
+  <p><label for="race">Race: </label>
+  <input type="text" name="character[race]" id="race"></p>
+  <p><label for="class">Class: </label>
+  <input type="text" name="character[class]" id="class"></p>
+  <p><label for="gender">Gender: </label>
+    <% genders.each do |gender| %>
+      <input type="checkbox" name="character[gender]" id="gender"><%= gender%></input>
+    <% end %></p>
+  <input type="submit">
+</form>

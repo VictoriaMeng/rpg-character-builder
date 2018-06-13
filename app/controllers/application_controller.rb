@@ -15,5 +15,9 @@ class ApplicationController < Sinatra::Base
     def blank_values?(params)
       params.values.any?(&:empty?)
     end
+
+    def genders
+      %w(Female Male Nonbinary)
+    end
   end
 end
