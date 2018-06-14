@@ -15,7 +15,7 @@ class CharacterController < ApplicationController
        @user = User.find(@character.user_id)
        erb :"/characters/show"
      else
-       flash[:error] = "Error: You must login to view your characters."
+       flash[:error] = "Error: You must login to view your characters. You may only view characters that you created."
        redirect "/login"
      end
   end
@@ -27,7 +27,7 @@ class CharacterController < ApplicationController
        @user = User.find(@character.user_id)
        erb :"/characters/edit"
      else
-       flash[:error] = "Error: You must login to edit your characters."
+       flash[:error] = "Error: You must login to edit your characters. You may only edit characters that you created."
        redirect "/login"
      end
   end
@@ -55,6 +55,7 @@ class CharacterController < ApplicationController
       flash[:error] = "Error: Please make at least one edit."
       redirect "/characters/#{params[:id]}/edit"
     elsif !belongs_to_user?
+      flash[:error] = "Error: You must login to edit your characters. You may only edit characters that you created."
       redirect "/login"
     else
       @character = Character.find(params[:id])
@@ -77,6 +78,7 @@ class CharacterController < ApplicationController
       @character.destroy
       redirect "/users/#{@character.user_id}"
     else
+      flash[:message] = "Error: You must be logged on to delete characters. You may only delete characters you created."
       redirect "/login"
     end
   end
