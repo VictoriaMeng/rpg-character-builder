@@ -15,6 +15,7 @@ class CharacterController < ApplicationController
        @user = User.find(@character.user_id)
        erb :"/characters/show"
      else
+       flash[:error] = "Error: You must login to view your characters."
        redirect "/login"
      end
   end
@@ -26,12 +27,14 @@ class CharacterController < ApplicationController
        @user = User.find(@character.user_id)
        erb :"/characters/edit"
      else
+       flash[:error] = "Error: You must login to edit your characters."
        redirect "/login"
      end
   end
 
   post "/characters/new" do
     if incomplete_form?
+      flash[:error] = "Error: Please fill in all fields."
       redirect "/characters/new"
     else
       @character = Character.create(params[:character])
@@ -49,6 +52,7 @@ class CharacterController < ApplicationController
 
   patch "/characters/:id/edit" do
     if no_edits?
+      flash[:error] = "Error: Please make at least one edit."
       redirect "/characters/#{params[:id]}/edit"
     elsif !belongs_to_user?
       redirect "/login"
