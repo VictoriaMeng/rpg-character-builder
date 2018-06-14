@@ -15,6 +15,7 @@
       <% end %>
     </nav>
     <br>
+    <p><%= flash[:error] if flash[:error] %></p>
     <%= yield %>
   </body>
   <footer>

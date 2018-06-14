@@ -45,6 +45,7 @@ class UserController < ApplicationController
       session[:id] = user.id
       redirect "/users/#{user.id}"
     else
+      flash[:error] = "Error: Incorrect login details"
       redirect "/login"
     end
   end
