@@ -27,8 +27,10 @@ class UserController < ApplicationController
 
   post '/signup' do
     if blank_values?(params)
+      flash[:error] = "Error: Please fill in all fields."
       redirect "/signup"
     elsif user_exists?
+      flash[:error] = "User/Email exists. Please login or choose different user details."
       redirect "/signup"
     else
       @user = User.create(params)
