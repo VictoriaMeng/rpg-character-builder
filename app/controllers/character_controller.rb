@@ -49,7 +49,7 @@ class CharacterController < ApplicationController
   patch "/characters/:id/edit" do
     if no_edits?
       redirect "/characters/#{params[:id]}/edit"
-    unless belongs_to_user?
+    elsif !belongs_to_user?
       redirect "/login"
     else
       @character = Character.find(params[:id])
