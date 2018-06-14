@@ -5,4 +5,8 @@
 <p><%= @character.race %></p>
 <p><%= @character.combat_class %></p>
 
-<p><a href="/characters/<%= @character.id %>/delete">Delete Character</a> or <a href="/characters/<%= @character.id %>/edit">Edit Character</a></p>
+<p><a href="/characters/<%= @character.id %>/edit">Edit Character</a></p>
+<p><form method="post" action="/characters/<%= @character.id %>/delete">
+  <input id="hidden" type="hidden" name="_method" value="delete">
+  <input type="submit" value="Delete Character">
+</form></p>

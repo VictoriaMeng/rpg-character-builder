@@ -67,4 +67,14 @@ class CharacterController < ApplicationController
     end
   end
 
+  delete "/characters/:id/delete" do
+    @character = Character.find(params[:id])
+    if belongs_to_user?(@character)
+      @character.destroy
+      redirect "/users/#{@character.user_id}"
+    else
+      redirect "/login"
+    end
+  end
+
 end
