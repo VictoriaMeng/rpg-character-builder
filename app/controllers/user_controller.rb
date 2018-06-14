@@ -9,7 +9,7 @@ class UserController < ApplicationController
   end
 
   get '/users/:id' do
-    if logged_in? && correct_user?
+    if correct_user?
       @user = User.find(session[:id])
       erb :'users/show'
     else
@@ -26,7 +26,6 @@ class UserController < ApplicationController
   end
 
   post '/signup' do
-    binding.pry
     if blank_values?(params)
       redirect "/signup"
     elsif user_exists?
