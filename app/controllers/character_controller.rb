@@ -47,16 +47,16 @@ class CharacterController < ApplicationController
   end
 
   patch "/characters/:id/edit" do
-    if all_empty?(params[:character]) && params[:new_game].empty?
+    if no_edits?
       redirect "/characters/#{params[:id]}/edit"
     else
       @character = Character.find(params[:id])
       params[:character].each do |key, value|
         @character.update("#{key}": "#{value}") unless value.empty?
       end
-      if params[:character][:game_id]
-        @character.update(game_id: params[:character][:game_id])
-      elsif !params[:new_game].empty?
+      if params[:game_id]
+        @character.update(game_id: params[:game_id])
+      elsif new_game?
         @game = Game.create(name: params[:new_game])
         @character.update(game_id: @game.id)
       end
