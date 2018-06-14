@@ -26,7 +26,10 @@ class UserController < ApplicationController
   end
 
   post '/signup' do
+    binding.pry
     if blank_values?(params)
+      redirect "/signup"
+    elsif user_exists?
       redirect "/signup"
     else
       @user = User.create(params)
