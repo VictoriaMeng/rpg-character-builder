@@ -1,6 +1,6 @@
-<h1>Hello, <%= @user.username %>.</h1>
+<h2>Hello, <%= @user.username %>.</h2>
 
-<h2>Existing Characters</h2>
+<h3>Existing Characters</h3>
 <% @user.characters.each do |character| %>
   <p><a href="/characters/<%= character.id%>"><%= character.name %></a></p>
 <% end %>
