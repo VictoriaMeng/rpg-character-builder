@@ -26,9 +26,7 @@ class UserController < ApplicationController
   end
 
   post '/signup' do
-    if blank_values?
-      redirect "/signup"
-    elsif user_exists?
+    if blank_values? || user_exists?
       redirect "/signup"
     else
       @user = User.create(params)
