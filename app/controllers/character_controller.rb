@@ -3,6 +3,7 @@ class CharacterController < ApplicationController
     if logged_in?
       erb :'/characters/new'
     else
+      flash[:error] = "Error: You must login to create a character."
       redirect "/login"
     end
   end
