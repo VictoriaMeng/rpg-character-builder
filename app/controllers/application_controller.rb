@@ -8,13 +8,14 @@ class ApplicationController < Sinatra::Base
     set :session_secret, "something"
   end
 
+
   get "/" do
     erb :index
   end
 
   helpers do
-    def blank_values?
-      params[:character].values.any?(&:empty?)
+    def blank_values?(params)
+      params.values.any?(&:empty?)
     end
 
     def genders
@@ -26,7 +27,7 @@ class ApplicationController < Sinatra::Base
     end
 
     def incomplete_form?
-      blank_values? || blank_game_input?
+      blank_values?(params[:character]) || blank_game_input?
     end
 
     def logged_in?
