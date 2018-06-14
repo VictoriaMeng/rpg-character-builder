@@ -4,10 +4,19 @@
     <h1>RPG Character Builder</h1>
   </head>
   <body>
+    <nav>
+      <a href="/games">All Games</a>
+      <% if logged_in? %>
+        <a href="/users/<%= session[:id] %>">Your Page</a>
+        <a href="/logout">Logout</a>
+      <% else %>
+        <a href="/signup">Sign Up</a>
+        <a href="/login">Login</a>
+      <% end %>
+    </nav>
+    <br>
     <%= yield %>
   </body>
   <footer>
-    <br>
-    <p><a href="/logout">Logout</a></p>
   </footer>
 </html>
