@@ -13,7 +13,7 @@ class ApplicationController < Sinatra::Base
   end
 
   helpers do
-    def blank_values?(params)
+    def blank_values?
       params.values.any?(&:empty?)
     end
 
@@ -21,8 +21,12 @@ class ApplicationController < Sinatra::Base
       %w(Female Male Nonbinary)
     end
 
-    def blank_game_input?(params)
+    def blank_game_input?
       !params[:game_id] && params[:new_game].empty?
+    end
+
+    def incomplete_form?
+      blank_values? || blank_game_input?
     end
 
     def logged_in?

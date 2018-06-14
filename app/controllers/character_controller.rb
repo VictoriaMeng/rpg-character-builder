@@ -30,7 +30,7 @@ class CharacterController < ApplicationController
   end
 
   post "/characters/new" do
-    if blank_values?(params[:character]) || blank_game_input?(params)
+    if incomplete_form?
       redirect "/characters/new"
     else
       @character = Character.create(params[:character])
