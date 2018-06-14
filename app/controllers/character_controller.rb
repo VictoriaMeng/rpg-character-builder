@@ -30,7 +30,6 @@ class CharacterController < ApplicationController
   end
 
   post "/characters/new" do
-    binding.pry
     if incomplete_form?
       redirect "/characters/new"
     else
@@ -50,6 +49,8 @@ class CharacterController < ApplicationController
   patch "/characters/:id/edit" do
     if no_edits?
       redirect "/characters/#{params[:id]}/edit"
+    unless belongs_to_user?
+      redirect "/login"
     else
       @character = Character.find(params[:id])
       params[:character].each do |key, value|
