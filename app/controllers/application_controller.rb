@@ -37,8 +37,8 @@ class ApplicationController < Sinatra::Base
       session[:id] == params[:id].to_i
     end
 
-    def belongs_to_user?(character)
-      character.user_id == session[:id]
+    def belongs_to_user?
+      @character.user_id == session[:id]
     end
 
     def all_empty?(params)

@@ -9,7 +9,7 @@ class CharacterController < ApplicationController
 
   get "/characters/:id" do
     @character = Character.find(params[:id])
-     if belongs_to_user?(@character)
+     if belongs_to_user?
        @game = Game.find(@character.game_id)
        @user = User.find(@character.user_id)
        erb :"/characters/show"
@@ -20,7 +20,7 @@ class CharacterController < ApplicationController
 
   get "/characters/:id/edit" do
     @character = Character.find(params[:id])
-     if belongs_to_user?(@character)
+     if belongs_to_user?
        @game = Game.find(@character.game_id)
        @user = User.find(@character.user_id)
        erb :"/characters/edit"
@@ -66,7 +66,7 @@ class CharacterController < ApplicationController
 
   delete "/characters/:id/delete" do
     @character = Character.find(params[:id])
-    if belongs_to_user?(@character)
+    if belongs_to_user?
       @character.destroy
       redirect "/users/#{@character.user_id}"
     else
