@@ -13,6 +13,7 @@ class UserController < ApplicationController
       @user = User.find(session[:id])
       erb :'users/show'
     else
+      flash[:error] = "Error: You can only view your user details when logged in."
       redirect "/login"
     end
   end
