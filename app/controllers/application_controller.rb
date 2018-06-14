@@ -14,7 +14,7 @@ class ApplicationController < Sinatra::Base
 
   helpers do
     def blank_values?
-      params.values.any?(&:empty?)
+      params[:character].values.any?(&:empty?)
     end
 
     def genders

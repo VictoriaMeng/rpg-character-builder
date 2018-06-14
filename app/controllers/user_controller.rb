@@ -26,7 +26,7 @@ class UserController < ApplicationController
   end
 
   post '/signup' do
-    if blank_values?(params)
+    if blank_values?
       redirect "/signup"
     elsif user_exists?
       redirect "/signup"

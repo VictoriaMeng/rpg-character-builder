@@ -30,6 +30,7 @@ class CharacterController < ApplicationController
   end
 
   post "/characters/new" do
+    binding.pry
     if incomplete_form?
       redirect "/characters/new"
     else
