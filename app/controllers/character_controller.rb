@@ -51,6 +51,7 @@ class CharacterController < ApplicationController
   end
 
   patch "/characters/:id/edit" do
+    @character = Character.find(params[:id])
     if no_edits?
       flash[:error] = "Error: Please make at least one edit."
       redirect "/characters/#{params[:id]}/edit"
@@ -58,7 +59,6 @@ class CharacterController < ApplicationController
       flash[:error] = "Error: You must login to edit your characters. You may only edit characters that you created."
       redirect "/login"
     else
-      @character = Character.find(params[:id])
       params[:character].each do |key, value|
         @character.update("#{key}": "#{value}") unless value.empty?
       end
