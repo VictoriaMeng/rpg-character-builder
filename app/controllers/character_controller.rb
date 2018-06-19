@@ -24,6 +24,7 @@ class CharacterController < ApplicationController
   get "/characters/:id/edit" do
     @character = Character.find(params[:id])
      if belongs_to_user?
+       @games = Game.all
        @game = Game.find(@character.game_id)
        @user = User.find(@character.user_id)
        erb :"/characters/edit"
