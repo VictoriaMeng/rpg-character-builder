@@ -11,7 +11,7 @@
       <input type="radio" name="character[gender]" id="gender" value="<%= gender %>"><%= gender%></input>
     <% end %></p>
   <p><label for="existing_game">Pick an existing game: </label>
-    <% Game.all.each do |game| %>
+    <% @games.each do |game| %>
       <input type="radio" name="game_id" id="existing_game" value="<%= game.id %>"> <%= game.name %></input>
     <% end %>
   </p>

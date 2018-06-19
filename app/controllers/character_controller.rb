@@ -1,6 +1,7 @@
 class CharacterController < ApplicationController
   get "/characters/new" do
     if logged_in?
+      @games = Game.all
       erb :'/characters/new'
     else
       flash[:error] = "Error: You must login to create a character."
