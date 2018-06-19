@@ -19,20 +19,8 @@ class ApplicationController < Sinatra::Base
       params.values.any?(&:empty?)
     end
 
-    def blank_game_input?
-      !params[:game_id] && params[:new_game].empty?
-    end
-
     def logged_in?
       session.has_key?(:id)
-    end
-
-    def all_empty?(params)
-      params.values.all?(&:empty?)
-    end
-
-    def no_edits?
-      all_empty?(params[:character]) && blank_game_input?
     end
 
     def new_game?

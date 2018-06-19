@@ -99,6 +99,18 @@ class CharacterController < ApplicationController
       @character.user_id == session[:id]
     end
 
+    def blank_game_input?
+      !params[:game_id] && params[:new_game].empty?
+    end
+
+    def all_empty?(params)
+      params.values.all?(&:empty?)
+    end
+
+    def no_edits?
+      all_empty?(params[:character]) && blank_game_input?
+    end
+
   end
 
 end
