@@ -6,7 +6,7 @@
 <% end %>
 <br>
 <h3>Your Games:</h3>
-<% @user.games.each do |game| %>
+<% @user.games.uniq.each do |game| %>
   <p><a href="/games/<%= game.id %>"><%= game.name %></a></p>
 <% end %>
 <br>
