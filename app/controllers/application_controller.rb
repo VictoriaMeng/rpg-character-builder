@@ -27,10 +27,6 @@ class ApplicationController < Sinatra::Base
       session.has_key?(:id)
     end
 
-    def belongs_to_user?
-      @character.user_id == session[:id]
-    end
-
     def all_empty?(params)
       params.values.all?(&:empty?)
     end

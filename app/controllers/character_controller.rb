@@ -95,6 +95,10 @@ class CharacterController < ApplicationController
       blank_values?(params[:character]) || blank_game_input?
     end
 
+    def belongs_to_user?
+      @character.user_id == session[:id]
+    end
+
   end
 
 end
