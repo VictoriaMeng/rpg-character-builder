@@ -86,7 +86,6 @@ class CharacterController < ApplicationController
   end
 
   helpers do
-
     def genders
     %w(Female Male Nonbinary)
     end
@@ -114,7 +113,5 @@ class CharacterController < ApplicationController
     def new_game?
       !params[:new_game].empty?
     end
-
   end
-
 end

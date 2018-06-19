@@ -58,7 +58,6 @@ class UserController < ApplicationController
   end
 
   helpers do
-
     def correct_user?
       session[:id] == params[:id].to_i
     end
@@ -74,7 +73,5 @@ class UserController < ApplicationController
     def email_exists?
       User.where("lower(email) = ?", params[:email].downcase).exists?
     end
-
   end
-
 end
