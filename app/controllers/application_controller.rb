@@ -19,10 +19,6 @@ class ApplicationController < Sinatra::Base
       params.values.any?(&:empty?)
     end
 
-    def genders
-      %w(Female Male Nonbinary)
-    end
-
     def blank_game_input?
       !params[:game_id] && params[:new_game].empty?
     end

@@ -85,4 +85,8 @@ class CharacterController < ApplicationController
     end
   end
 
+  def genders
+    %w(Female Male Nonbinary)
+  end
+
 end
