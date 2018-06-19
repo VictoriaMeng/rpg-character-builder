@@ -23,10 +23,6 @@ class ApplicationController < Sinatra::Base
       !params[:game_id] && params[:new_game].empty?
     end
 
-    def incomplete_form?
-      blank_values?(params[:character]) || blank_game_input?
-    end
-
     def logged_in?
       session.has_key?(:id)
     end

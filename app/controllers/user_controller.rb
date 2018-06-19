@@ -1,3 +1,4 @@
+
 class UserController < ApplicationController
 
   get '/signup' do

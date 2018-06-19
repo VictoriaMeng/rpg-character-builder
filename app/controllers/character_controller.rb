@@ -85,8 +85,16 @@ class CharacterController < ApplicationController
     end
   end
 
-  def genders
+  helpers do
+
+    def genders
     %w(Female Male Nonbinary)
+    end
+
+    def incomplete_form?
+      blank_values?(params[:character]) || blank_game_input?
+    end
+
   end
 
 end
