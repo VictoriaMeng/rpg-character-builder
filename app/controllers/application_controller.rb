@@ -22,9 +22,5 @@ class ApplicationController < Sinatra::Base
     def logged_in?
       session.has_key?(:id)
     end
-
-    def new_game?
-      !params[:new_game].empty?
-    end
   end
 end

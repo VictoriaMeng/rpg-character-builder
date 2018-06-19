@@ -111,6 +111,10 @@ class CharacterController < ApplicationController
       all_empty?(params[:character]) && blank_game_input?
     end
 
+    def new_game?
+      !params[:new_game].empty?
+    end
+
   end
 
 end
