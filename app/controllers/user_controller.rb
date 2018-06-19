@@ -63,6 +63,18 @@ class UserController < ApplicationController
       session[:id] == params[:id].to_i
     end
 
+    def user_exists?
+      username_exists? || email_exists?
+    end
+
+    def username_exists?
+      User.where("lower(username) = ?", params[:username].downcase).exists?
+    end
+
+    def email_exists?
+      User.where("lower(email) = ?", params[:email].downcase).exists?
+    end
+
   end
 
 end

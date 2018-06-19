@@ -31,18 +31,6 @@ class ApplicationController < Sinatra::Base
       params.values.all?(&:empty?)
     end
 
-    def user_exists?
-      username_exists? || email_exists?
-    end
-
-    def username_exists?
-      User.where("lower(username) = ?", params[:username].downcase).exists?
-    end
-
-    def email_exists?
-      User.where("lower(email) = ?", params[:email].downcase).exists?
-    end
-
     def no_edits?
       all_empty?(params[:character]) && blank_game_input?
     end
