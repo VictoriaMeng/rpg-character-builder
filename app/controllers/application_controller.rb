@@ -27,10 +27,6 @@ class ApplicationController < Sinatra::Base
       session.has_key?(:id)
     end
 
-    def correct_user?
-      session[:id] == params[:id].to_i
-    end
-
     def belongs_to_user?
       @character.user_id == session[:id]
     end

@@ -57,4 +57,12 @@ class UserController < ApplicationController
     redirect "/"
   end
 
+  helpers do
+
+    def correct_user?
+      session[:id] == params[:id].to_i
+    end
+
+  end
+
 end
