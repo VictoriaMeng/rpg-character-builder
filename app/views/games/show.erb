@@ -1,8 +1,8 @@
 <h2><%= @game.name %></h2>
-<p>Number of players: <%= @game.users.count %></p>
+<p>Number of players: <%= @game.users.uniq.count %></p>
 <p>Number of characters: <%= @game.characters.count %></p>
 <h3>Players:</h3>
-<% @game.users.each do |user| %>
+<% @game.users.uniq.each do |user| %>
   <p><%= user.username %></p>
 <% end %>
 <h3>Characters:</h3>
