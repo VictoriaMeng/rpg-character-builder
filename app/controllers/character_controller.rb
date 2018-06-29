@@ -53,15 +53,15 @@ class CharacterController < ApplicationController
 
   patch "/characters/:id/edit" do
     @character = Character.find(params[:id])
-    if no_edits?
-      flash[:error] = "Error: Please make at least one edit."
+    if incomplete_form?
+      flash[:error] = "Error: No field can be blank."
       redirect "/characters/#{params[:id]}/edit"
     elsif !belongs_to_user?
       flash[:error] = "Error: You must login to edit your characters. You may only edit characters that you created."
       redirect "/login"
     else
       params[:character].each do |key, value|
-        @character.update("#{key}": "#{value}") unless value.empty?
+        @character.update("#{key}": "#{value}")
       end
       if params[:game_id]
         @character.update(game_id: params[:game_id])
@@ -99,14 +99,6 @@ class CharacterController < ApplicationController
 
     def blank_game_input?
       !params[:game_id] && params[:new_game].empty?
-    end
-
-    def all_empty?(params)
-      params.values.all?(&:empty?)
-    end
-
-    def no_edits?
-      all_empty?(params[:character]) && blank_game_input?
     end
 
     def new_game?
