@@ -38,9 +38,9 @@ class CharacterController < ApplicationController
       flash[:error] = "Error: Please fill in all fields."
       redirect "/characters/new"
     else
-      @character = Character.create(params[:character])
       @user = User.find(session[:id])
-      @user.characters.build(params[:character]).save
+      @character = @user.characters.build(params[:character])
+      @character.save
       if new_game?
         @game = Game.create(name: params[:new_game])
       else
