@@ -60,9 +60,10 @@ class CharacterController < ApplicationController
       flash[:error] = "Error: You must login to edit your characters. You may only edit characters that you created."
       redirect "/login"
     else
-      params[:character].each do |key, value|
-        @character.update("#{key}": "#{value}")
-      end
+      # params[:character].each do |key, value|
+      #   @character.update("#{key}": "#{value}")
+      # end
+      @character.update(params[:character])
       if params[:game_id]
         @character.update(game_id: params[:game_id])
       elsif new_game?
