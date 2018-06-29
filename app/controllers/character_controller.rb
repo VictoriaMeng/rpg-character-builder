@@ -26,7 +26,6 @@ class CharacterController < ApplicationController
      if belongs_to_user?
        @games = Game.all
        @game = Game.find(@character.game_id)
-       @user = User.find(@character.user_id)
        erb :"/characters/edit"
      else
        flash[:error] = "Error: You must login to edit your characters. You may only edit characters that you created."

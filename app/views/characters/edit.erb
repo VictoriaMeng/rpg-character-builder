@@ -1,18 +1,18 @@
 <form method="post" action="/characters/<%= @character.id %>/edit">
   <input id="hidden" type="hidden" name="_method" value="patch">
   <p><label for="name">Name: </label>
-  <input type="text" name="character[name]" id="name"></p>
+  <input type="text" name="character[name]" id="name" value="<%= @character.name %>"></p>
   <p><label for="race">Race: </label>
-  <input type="text" name="character[race]" id="race"></p>
+  <input type="text" name="character[race]" id="race" value="<%= @character.race %>"></p>
   <p><label for="combat_class">Class: </label>
-  <input type="text" name="character[combat_class]" id="combat_class"></p>
+  <input type="text" name="character[combat_class]" id="combat_class" value="<%= @character.combat_class %>"></p>
   <p><label for="gender">Gender: </label>
     <% genders.each do |gender| %>
-      <input type="radio" name="character[gender]" id="gender" value="<%= gender %>"><%= gender%></input>
+      <input type="radio" name="character[gender]" id="gender" value="<%= gender %>" <%= 'checked' if @character.gender == gender %>><%= gender%></input>
     <% end %></p>
   <p><label for="existing_game">Pick an existing game: </label>
     <% @games.each do |game| %>
-      <input type="radio" name="game_id" id="existing_game" value="<%= game.id %>"> <%= game.name %></input>
+      <input type="radio" name="game_id" id="existing_game" value="<%= game.id %>" <%= 'checked' if @character.game_id == game.id %>> <%= game.name %></input>
     <% end %>
   </p>
   <p><label for="new_game">Or enter a new game: </label>
