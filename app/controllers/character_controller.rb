@@ -40,8 +40,7 @@ class CharacterController < ApplicationController
     else
       @character = Character.create(params[:character])
       @user = User.find(session[:id])
-      # @character.update(user_id: @user.id)
-      @user.characters.build(params[:character])
+      @user.characters.build(params[:character]).save
       binding.pry
       if new_game?
         @game = Game.create(name: params[:new_game])
