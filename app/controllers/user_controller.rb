@@ -45,6 +45,7 @@ class UserController < ApplicationController
     user = User.find_by(username: params[:username])
     if user && user.authenticate(params[:password])
       session[:id] = user.id
+      #change to user_id or different key to avoid mixup with session_id
       redirect "/users/#{user.id}"
     else
       flash[:error] = "Error: Incorrect login details"
