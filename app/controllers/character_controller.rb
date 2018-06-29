@@ -84,7 +84,7 @@ class CharacterController < ApplicationController
 
   helpers do
     def genders
-    %w(Female Male Nonbinary)
+      %w(Female Male Nonbinary)
     end
 
     def incomplete_form?
