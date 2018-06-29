@@ -10,4 +10,4 @@ Users can also view a list of games along with the number of characters and user
 
 ## Instructions
 
-Clone the repo, run `rake db:migrate`, then run 'shotgun' and open the url in your browser.
+Clone the repo and navigate into it, run 'bundle install', run `rake db:migrate`, then run 'shotgun' and open the url in your browser.
