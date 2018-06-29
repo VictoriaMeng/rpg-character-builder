@@ -61,12 +61,6 @@ class CharacterController < ApplicationController
       redirect "/login"
     else
       @character.update(params[:character])
-      # if params[:game_id]
-      #   @character.update(game_id: params[:game_id])
-      # elsif new_game?
-      #   @game = Game.create(name: params[:new_game])
-      #   @character.update(game_id: @game.id)
-      # end
       if new_game?
         @game = Game.create(name: params[:new_game])
         @character.update(game_id: @game.id)
