@@ -1,9 +1,9 @@
-<p><%= @character.name %></p>
-<p><%= @user.username %></p>
-<p><%= @game.name %></p>
-<p><%= @character.gender %></p>
-<p><%= @character.race %></p>
-<p><%= @character.combat_class %></p>
+<p><b>Name: </b><%= @character.name %></p>
+<p><b>Username: </b><%= @user.username %></p>
+<p><b>Game: </b><%= @game.name %></p>
+<p><b>Gender: </b><%= @character.gender %></p>
+<p><b>Race: </b><%= @character.race %></p>
+<p><b>Class: </b><%= @character.combat_class %></p>
 
 <p><a href="/characters/<%= @character.id %>/edit">Edit Character</a></p>
 <p><form method="post" action="/characters/<%= @character.id %>/delete">
